@@ -12,6 +12,8 @@ extension Acoustics.Fracture {
         /// The terminal speed of a running crack.
         public var crack: Velocity.Value<Double>
         public var loss: Loss.Value<Double>
+        /// The bending stress at which a pane of it breaks: its modulus of rupture.
+        public var rupture: Stress.Value<Double>
 
         @inlinable
         public init(
@@ -20,7 +22,8 @@ extension Acoustics.Fracture {
             poisson: Poisson.Value<Double>,
             surface: Double,
             crack: Velocity.Value<Double>,
-            loss: Loss.Value<Double>
+            loss: Loss.Value<Double>,
+            rupture: Stress.Value<Double>
         ) {
             self.young = young
             self.density = density
@@ -28,6 +31,7 @@ extension Acoustics.Fracture {
             self.surface = surface
             self.crack = crack
             self.loss = loss
+            self.rupture = rupture
         }
     }
 }
@@ -41,6 +45,8 @@ extension Acoustics.Fracture.Material {
     /// - Terminal crack speed 1500 m/s (Schardin 1959, in *Fracture*, Averbach et al., eds., 297–330).
     /// - Loss factor 0.001, inside the 0.0006 to 0.002 that Cremer, Heckl and Petersson (*Structure-Borne Sound*,
     ///   3rd ed., 2005) give for glass.
+    /// - Modulus of rupture 41 MPa (6,000 psi), the mean breaking stress of annealed float glass (Glass Association
+    ///   of North America, FM05-12, 2023; Pilkington, ATS-129).
     public static var glass: Self {
         Self(
             young: Modulus.Young.pascals(72e9),
@@ -48,7 +54,8 @@ extension Acoustics.Fracture.Material {
             poisson: Poisson.amount(0.22),
             surface: 3.9,
             crack: Velocity.amount(1500),
-            loss: Loss.amount(0.001)
+            loss: Loss.amount(0.001),
+            rupture: Stress.amount(41e6)
         )
     }
 
