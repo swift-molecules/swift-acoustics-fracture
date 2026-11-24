@@ -6,9 +6,11 @@ import Testing
     let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Poisson.amount(0.22))
     let wood = Acoustics.Fracture.Floor.douglasFir.elastic
 
-    func impact(_ modes: [Acoustics.Fracture.Mode], restitution: Double = 1, tilt: Double = 0)
-        -> Acoustics.Fracture.Impact
-    {
+    func impact(
+        _ modes: [Acoustics.Fracture.Mode],
+        restitution: Double = 1,
+        tilt: Double = 0
+    ) -> Acoustics.Fracture.Impact {
         Acoustics.Fracture.Impact(
             fragment: Mass.kilograms(0.01),
             corner: Mass.kilograms(0.0025),

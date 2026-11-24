@@ -17,23 +17,13 @@ extension Acoustics.Fracture {
     ///   after the floor last pressed.
     /// - Hertz's contact is elastic. The landing's restitution e leaves (1 + e) / 2 of its impulse, so the force and what each
     ///   mode is left with are scaled by that.
-    public struct Impact: Hashable, Sendable {
+    public struct Impact: Sendable {
         /// The step between force samples.
         public let step: Time.Duration.Value<Double>
         /// The force at each step from first touch, ending when the floor lets go.
         public let forces: [Force.Value<Double>]
         /// What each mode is left with: its speed V and phase as V e^(iϕ), Re(V e^(iϕ) e^(iωt)) after first touch.
         public let rings: [(re: Double, im: Double)]
-
-        public static func == (l: Self, r: Self) -> Bool {
-            l.step == r.step && l.forces == r.forces && l.rings.count == r.rings.count
-                && zip(l.rings, r.rings).allSatisfy { $0.re == $1.re && $0.im == $1.im }
-        }
-
-        public func hash(into hasher: inout Hasher) {
-            hasher.combine(step)
-            hasher.combine(forces)
-        }
 
         public init(
             fragment: Mass.Value<Double>,
@@ -103,6 +93,18 @@ extension Acoustics.Fracture {
             self.step = interval
             self.forces = forces
         }
+    }
+}
+
+extension Acoustics.Fracture.Impact: Hashable {
+    public static func == (l: Self, r: Self) -> Bool {
+        l.step == r.step && l.forces == r.forces && l.rings.count == r.rings.count
+            && zip(l.rings, r.rings).allSatisfy { $0.re == $1.re && $0.im == $1.im }
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(step)
+        hasher.combine(forces)
     }
 }
 

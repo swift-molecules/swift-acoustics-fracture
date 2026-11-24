@@ -205,9 +205,11 @@ extension Acoustics.Fracture.Pane {
         }
     }
 
-    static func scaled(_ mode: Acoustics.Fracture.Square.Mode, from: Double, to side: Double)
-        -> Acoustics.Fracture.Square.Mode
-    {
+    static func scaled(
+        _ mode: Acoustics.Fracture.Square.Mode,
+        from: Double,
+        to side: Double
+    ) -> Acoustics.Fracture.Square.Mode {
         Acoustics.Fracture.Square.Mode(
             frequency: mode.frequency * from * from / (side * side),
             efficiency: mode.efficiency,

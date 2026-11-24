@@ -35,8 +35,7 @@ import Testing
         }
     }
 
-    @Test func `the pane bends as Timoshenko's centrally loaded circular plate, at its modulus of rupture at the load`()
-    {
+    @Test func `the pane bends as Timoshenko's centrally loaded plate, at its rupture stress at the load`() {
         let h = 0.004
         let nu = 0.22
         let e = 72e9

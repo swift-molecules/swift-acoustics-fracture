@@ -3,9 +3,7 @@ import Numeric
 import Testing
 
 @Suite struct `Acoustics.Fracture.Break Tests` {
-    @Test
-    func `a pane breaks once and rains down: the loudest moment is the break or the first landings, then it dies away`()
-    {
+    @Test func `a pane breaks once and rains down, loudest at the break or first landings, then dies away`() {
         let pane = Acoustics.Fracture.Pane(
             width: Space.Physical.metres(0.3),
             height: Space.Physical.metres(0.2),

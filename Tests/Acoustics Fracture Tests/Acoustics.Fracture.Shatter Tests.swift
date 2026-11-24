@@ -5,9 +5,12 @@ import Testing
 @Suite struct `Acoustics.Fracture.Shatter Tests` {
     let rate = 48_000.0
 
-    func single(_ hertz: Double, efficiency: Double = 1, release: Double = 1, bounces: [Acoustics.Fracture.Bounce] = [])
-        -> Acoustics.Fracture.Shatter
-    {
+    func single(
+        _ hertz: Double,
+        efficiency: Double = 1,
+        release: Double = 1,
+        bounces: [Acoustics.Fracture.Bounce] = []
+    ) -> Acoustics.Fracture.Shatter {
         let fragment = Acoustics.Fracture.Fragment(
             x: Space.Physical.metres(0),
             y: Space.Physical.metres(0),

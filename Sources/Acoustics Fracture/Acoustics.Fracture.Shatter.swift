@@ -59,9 +59,11 @@ extension Acoustics.Fracture.Shatter {
     /// Both faces radiate W = ρ₀ c σ S V² (each ½ ρ₀ c σ S V², the mean square of its velocity being ½ V²), and
     /// spread evenly over a sphere this is a mean square pressure ρ₀ c W / 4π r², an amplitude
     /// ρ₀ c V √(σ S / 2π) / r.
-    public func gain(_ mode: Acoustics.Fracture.Mode, of fragment: Acoustics.Fracture.Fragment, at distance: Double)
-        -> Double
-    {
+    public func gain(
+        _ mode: Acoustics.Fracture.Mode,
+        of fragment: Acoustics.Fracture.Fragment,
+        at distance: Double
+    ) -> Double {
         let rc = air.density.underlying * air.speed.underlying
         return rc * (mode.efficiency * fragment.area.underlying / (2 * Double.pi)).squareRoot() / distance
     }
