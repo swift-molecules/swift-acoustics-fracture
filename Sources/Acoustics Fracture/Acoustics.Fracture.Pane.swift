@@ -13,7 +13,7 @@ extension Acoustics.Fracture {
 
         @inlinable
         public init(
-            material: Material = .sodaLimeGlass,
+            material: Material = .glass,
             width: Length<Space.Physical, Double>,
             height: Length<Space.Physical, Double>,
             thickness: Length<Space.Physical, Double>,

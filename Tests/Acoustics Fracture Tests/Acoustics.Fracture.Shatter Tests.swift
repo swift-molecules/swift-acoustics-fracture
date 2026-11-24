@@ -7,7 +7,8 @@ import Testing
 
     func single(_ hertz: Double) -> Acoustics.Fracture.Shatter {
         let fragment = Acoustics.Fracture.Fragment(
-            x: Space.Physical.metres(0), y: Space.Physical.metres(0),
+            x: Space.Physical.metres(0),
+            y: Space.Physical.metres(0),
             area: Area<Space.Physical>.amount(0.0025),
             mass: Mass.kilograms(0.025),
             released: Time.Duration.amount(0),
@@ -15,7 +16,9 @@ import Testing
             modes: [Frequency.hertz(hertz)]
         )
         return Acoustics.Fracture.Shatter(
-            material: .sodaLimeGlass, thickness: Space.Physical.metres(0.004), fragments: [fragment]
+            material: .glass,
+            thickness: Space.Physical.metres(0.004),
+            fragments: [fragment]
         )
     }
 
@@ -55,8 +58,10 @@ import Testing
 
     @Test func `a broken window is the same for the same seed`() {
         let pane = Acoustics.Fracture.Pane(
-            width: Space.Physical.metres(0.3), height: Space.Physical.metres(0.2),
-            thickness: Space.Physical.metres(0.004), elevation: Space.Physical.metres(0.5)
+            width: Space.Physical.metres(0.3),
+            height: Space.Physical.metres(0.2),
+            thickness: Space.Physical.metres(0.004),
+            elevation: Space.Physical.metres(0.5)
         )
         let shatter = pane.shatter(x: Space.Physical.metres(0.1), y: Space.Physical.metres(0.1), rate: 30, seed: 1)
         let interval = Time.Duration.amount(1 / rate)

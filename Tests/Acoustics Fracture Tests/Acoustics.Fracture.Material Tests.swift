@@ -3,7 +3,7 @@ import Numeric
 import Testing
 
 @Suite struct `Acoustics.Fracture.Material Tests` {
-    let glass = Acoustics.Fracture.Material.sodaLimeGlass
+    let glass = Acoustics.Fracture.Material.glass
 
     @Test func `soda-lime glass's toughness is the measured 0.75 MPa√m to 5%`() {
         // √(2 × 3.9 × 72 × 10⁹ / (1 − 0.22²)) = 0.768 MPa√m.

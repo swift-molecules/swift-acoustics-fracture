@@ -2,11 +2,13 @@ import Acoustics_Fracture
 import Testing
 
 @Suite struct `Acoustics.Fracture.Fragment Tests` {
-    let glass = Acoustics.Fracture.Material.sodaLimeGlass
+    let glass = Acoustics.Fracture.Material.glass
 
     @Test func `a free square plate rings at Leissa's eigenvalues`() {
         let modes = Acoustics.Fracture.Fragment.modes(
-            side: Space.Physical.metres(0.05), thickness: Space.Physical.metres(0.004), material: glass
+            side: Space.Physical.metres(0.05),
+            thickness: Space.Physical.metres(0.004),
+            material: glass
         )
         let d = 72e9 * 0.004 * 0.004 * 0.004 / (12 * (1 - 0.22 * 0.22))
         let root = (d / (2500 * 0.004)).squareRoot()
@@ -19,13 +21,19 @@ import Testing
 
     @Test func `half the side rings four times as high, twice the thickness twice as high`() {
         let one = Acoustics.Fracture.Fragment.modes(
-            side: Space.Physical.metres(0.04), thickness: Space.Physical.metres(0.003), material: glass
+            side: Space.Physical.metres(0.04),
+            thickness: Space.Physical.metres(0.003),
+            material: glass
         )
         let half = Acoustics.Fracture.Fragment.modes(
-            side: Space.Physical.metres(0.02), thickness: Space.Physical.metres(0.003), material: glass
+            side: Space.Physical.metres(0.02),
+            thickness: Space.Physical.metres(0.003),
+            material: glass
         )
         let thick = Acoustics.Fracture.Fragment.modes(
-            side: Space.Physical.metres(0.04), thickness: Space.Physical.metres(0.006), material: glass
+            side: Space.Physical.metres(0.04),
+            thickness: Space.Physical.metres(0.006),
+            material: glass
         )
         #expect(abs(half[0] / one[0] - 4) < 1e-12)
         #expect(abs(thick[0] / one[0] - 2) < 1e-12)

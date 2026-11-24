@@ -40,7 +40,7 @@ extension Acoustics.Fracture.Shatter {
     /// intervals, from the moment the pane broke.
     ///
     /// A mode of frequency f struck to speed V moves as V e^(−σ t) sin(2π f t) and accelerates as its derivative,
-    /// with σ = π f η, the amplitude decay rate of loss factor η, so its level falls 60 dB in 6.908 / σ. The two
+    /// so V e^(−σ t) (ω cos ωt − σ sin ωt), with σ = π f η, the amplitude decay rate of loss factor η, so its level falls 60 dB in 6.908 / σ. The two
     /// strikes add. A mode at or above half the sampling rate is left out, and each strike is followed until it
     /// has fallen 120 dB. The sign of each strike, where the mode shape is struck, is drawn from `seed`.
     public func accelerations(
@@ -67,7 +67,6 @@ extension Acoustics.Fracture.Shatter {
                     guard start < count else { continue }
                     let offset = Double(start) * dt - time.underlying
                     let length = Swift.min(count - start, Int((120 / 8.686 / sigma) / dt) + 1)
-                    // d/dt [V e^(−σt) sin ωt] = V e^(−σt) (ω cos ωt − σ sin ωt).
                     let amplitude = sign * speed.underlying * Double.math.exp(-sigma * offset)
                     var re = Double.math.cos(omega * offset)
                     var im = Double.math.sin(omega * offset)

@@ -41,7 +41,7 @@ extension Acoustics.Fracture.Material {
     /// - Terminal crack speed 1500 m/s (Schardin 1959, in *Fracture*, Averbach et al., eds., 297–330).
     /// - Loss factor 0.001, inside the 0.0006 to 0.002 that Cremer, Heckl and Petersson (*Structure-Borne Sound*,
     ///   3rd ed., 2005) give for glass.
-    public static var sodaLimeGlass: Self {
+    public static var glass: Self {
         Self(
             young: Modulus.Young.pascals(72e9),
             density: Density.amount(2500),
