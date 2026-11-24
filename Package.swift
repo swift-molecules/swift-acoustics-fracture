@@ -16,18 +16,41 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/swift-molecules/swift-acoustics.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-acceleration.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-decay.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-frequency.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-loss.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-mass.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-modulus.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-numeric.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-poisson.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-rigidity.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-stress.git", branch: "main"),
+        .package(url: "https://github.com/swift-atoms/swift-threefry.git", branch: "main"),
     ],
     targets: [
         .target(
             name: "Acoustics Fracture",
             dependencies: [
                 .product(name: "Acoustics", package: "swift-acoustics"),
+                .product(name: "Acceleration", package: "swift-acceleration"),
+                .product(name: "Decay", package: "swift-decay"),
+                .product(name: "Frequency", package: "swift-frequency"),
+                .product(name: "Loss", package: "swift-loss"),
+                .product(name: "Mass", package: "swift-mass"),
+                .product(name: "Modulus", package: "swift-modulus"),
+                .product(name: "Numeric", package: "swift-numeric"),
+                .product(name: "Poisson", package: "swift-poisson"),
+                .product(name: "Rigidity", package: "swift-rigidity"),
+                .product(name: "Stress", package: "swift-stress"),
+                .product(name: "Threefry", package: "swift-threefry"),
             ]
         ),
         .testTarget(
             name: "Acoustics Fracture Tests",
             dependencies: [
-                .target(name: "Acoustics Fracture")
+                .target(name: "Acoustics Fracture"),
+                .product(name: "Numeric", package: "swift-numeric"),
             ]
         ),
     ],
