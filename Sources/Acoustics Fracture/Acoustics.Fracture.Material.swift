@@ -6,7 +6,7 @@ extension Acoustics.Fracture {
     public struct Material: Hashable, Sendable {
         public var young: Modulus.Young.Value<Double>
         public var density: Density.Value<Double>
-        public var poisson: Poisson.Value<Double>
+        public var poisson: Strain.Ratio.Value<Double>
         /// The fracture surface energy γ, in joules per square metre: what one square metre of new surface costs.
         public var surface: Double
         /// The terminal speed of a running crack.
@@ -19,7 +19,7 @@ extension Acoustics.Fracture {
         public init(
             young: Modulus.Young.Value<Double>,
             density: Density.Value<Double>,
-            poisson: Poisson.Value<Double>,
+            poisson: Strain.Ratio.Value<Double>,
             surface: Double,
             crack: Velocity.Value<Double>,
             loss: Loss.Value<Double>,
@@ -51,7 +51,7 @@ extension Acoustics.Fracture.Material {
         Self(
             young: Modulus.Young.pascals(72e9),
             density: Density.amount(2500),
-            poisson: Poisson.amount(0.22),
+            poisson: Strain.Ratio.amount(0.22),
             surface: 3.9,
             crack: Velocity.amount(1500),
             loss: Loss.amount(0.001),

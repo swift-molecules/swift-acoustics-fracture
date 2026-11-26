@@ -3,7 +3,7 @@ import Testing
 
 @Suite struct `Acoustics.Fracture.Bounce Tests` {
     let g = 9.80665
-    let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Poisson.amount(0.22))
+    let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Strain.Ratio.amount(0.22))
 
     func tumble(tilt: Double, height: Double = 1) -> [Acoustics.Fracture.Bounce] {
         Acoustics.Fracture.Bounce.tumble(

@@ -7,7 +7,7 @@ import Testing
     /// Leissa's own Poisson's ratio, 0.3, on soda-lime glass otherwise.
     let leissa: Acoustics.Fracture.Material = {
         var material = Acoustics.Fracture.Material.glass
-        material.poisson = Poisson.amount(0.3)
+        material.poisson = Strain.Ratio.amount(0.3)
         return material
     }()
 

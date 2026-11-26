@@ -6,6 +6,6 @@
 @_exported public import Loss
 @_exported public import Mass
 @_exported public import Modulus
-@_exported public import Poisson
+@_exported public import Strain
 @_exported public import Pressure
 @_exported public import Stress

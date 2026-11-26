@@ -3,7 +3,7 @@ import Numeric
 import Testing
 
 @Suite struct `Acoustics.Fracture.Impact Tests` {
-    let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Poisson.amount(0.22))
+    let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Strain.Ratio.amount(0.22))
     let wood = Acoustics.Fracture.Floor.douglasFir.elastic
 
     func impact(

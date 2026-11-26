@@ -4,7 +4,7 @@ import Testing
 
 @Suite struct `Acoustics.Fracture.Floor Tests` {
     let floor = Acoustics.Fracture.Floor.douglasFir
-    let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Poisson.amount(0.22))
+    let glass = Contact.Elastic(young: Modulus.Young.pascals(72e9), poisson: Strain.Ratio.amount(0.22))
 
     func restitution(_ mass: Double, _ speed: Double, _ radius: Double) -> Double {
         floor.restitution(
